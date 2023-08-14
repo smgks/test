@@ -4,7 +4,7 @@ part of 'image_search_bloc.dart';
 abstract class ImageSearchState {}
 
 class ImageSearchResult extends ImageSearchState {
-  final ImageManager imageManager;
+  final ContentManager imageManager;
   final String query;
   final int pages;
   final int currentPage;
@@ -16,8 +16,8 @@ class ImageSearchResult extends ImageSearchState {
     this.error,
     required this.pages,
     this.currentPage = 1,
-    ImageManager? imageManager,
-  }) : imageManager = imageManager ?? ImageManager();
+    ContentManager? imageManager,
+  }) : imageManager = imageManager ?? ContentManager<ImageEntity>();
 }
 
 class ImageSearchLoading extends ImageSearchState {

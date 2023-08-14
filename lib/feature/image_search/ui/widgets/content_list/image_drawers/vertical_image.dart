@@ -5,8 +5,8 @@ import 'package:styled_widget/styled_widget.dart';
 
 import '/feature/image_search/ui/bloc/image_search_bloc.dart';
 import '/feature/image_search/ui/view_models/image_manager.dart';
-import '/feature/image_search/ui/widgets/images_list/image_network_loader.dart';
-import '/feature/image_search/ui/widgets/images_list/vertical_loader.dart';
+import 'image_network_loader.dart';
+import '../loaders/vertical_loader.dart';
 
 class VerticalImages extends StatelessWidget {
   const VerticalImages({
@@ -14,7 +14,7 @@ class VerticalImages extends StatelessWidget {
     required this.image,
   });
 
-  final ImageHolderVertical image;
+  final ContentHolderVertical image;
 
   @override
   Widget build(BuildContext context) {
@@ -29,20 +29,20 @@ class VerticalImages extends StatelessWidget {
           children: [
             Expanded(
               child: ImageNetworkLoader(
-                url: image.images[0].urlSmall,
-                urlRaw: image.images[0].urlRaw,
-                id: image.images[0].id,
+                url: image.content[0].urlSmall,
+                urlRaw: image.content[0].urlRaw,
+                id: image.content[0].id,
               ),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
             ),
-            if (image.images.length > 1)
+            if (image.content.length > 1)
               Expanded(
                 child: ImageNetworkLoader(
-                  url: image.images[1].urlSmall,
-                  urlRaw: image.images[1].urlRaw,
-                  id: image.images[1].id,
+                  url: image.content[1].urlSmall,
+                  urlRaw: image.content[1].urlRaw,
+                  id: image.content[1].id,
                 ),
               )
             else if (shouldPaintLoader(context))

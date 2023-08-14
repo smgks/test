@@ -1,9 +1,9 @@
-import '/feature/image_search/domain/entities/image_entity.dart';
+import 'package:temp/feature/image_search/domain/entities/media_content.dart';
 
-class ImageManager {
-  ImageManager();
+class ContentManager<T extends MediaContentEntity> {
+  ContentManager();
 
-  final List<ImageHolderBase> holders = [];
+  final List<ContentHolderBase<T>> holders = [];
   int get length => holders.length;
 
   int? _freeVerticalIndex;
@@ -11,61 +11,60 @@ class ImageManager {
   bool get isPageComplete => _freeVerticalIndex == null;
 
 
-  void addAll(List<ImageEntity> images) {
+  void addAll(List<T> images) {
     for (var image in images) {
       _add(image);
     }
     if (_freeVerticalIndex != null) {
-      var temp = holders[_freeVerticalIndex!] as ImageHolderVertical;
+      var temp = holders[_freeVerticalIndex!] as ContentHolderVertical<T>;
       holders.removeAt(_freeVerticalIndex!);
       _freeVerticalIndex = holders.length;
       holders.add(temp);
     }
   }
 
-  void _add(ImageEntity image) {
+  void _add(T image) {
     if (image.isHorizontal) {
-      holders.add(ImageHolderHorizontal(image: image));
+      holders.add(ContentHolderHorizontal<T>(content: image));
     } else {
       if (_freeVerticalIndex == null) {
         holders.add(
-          ImageHolderVertical(
-            imageInitial: image,
+          ContentHolderVertical<T>(
+            contentInitial: image,
           ),
         );
         _freeVerticalIndex = holders.length - 1;
       } else {
-        (holders[_freeVerticalIndex!] as ImageHolderVertical).add(image);
+        (holders[_freeVerticalIndex!] as ContentHolderVertical).add(image);
         _freeVerticalIndex = null;
       }
     }
-
   }
 }
 
-abstract class ImageHolderBase {
+abstract class ContentHolderBase<T> {
   bool get isHorizontal;
 }
 
-class ImageHolderVertical extends ImageHolderBase {
-  ImageHolderVertical({
-    required ImageEntity imageInitial,
-  }) : images = [imageInitial];
-  final List<ImageEntity> images;
+class ContentHolderVertical<T> extends ContentHolderBase<T> {
+  ContentHolderVertical({
+    required T contentInitial,
+  }) : content = [contentInitial];
+  final List<T> content;
 
-  void add(ImageEntity image) {
-    images.add(image);
+  void add(T image) {
+    content.add(image);
   }
 
   @override
   bool get isHorizontal => false;
 }
 
-class ImageHolderHorizontal extends ImageHolderBase {
-  ImageHolderHorizontal({
-    required this.image,
+class ContentHolderHorizontal<T> extends ContentHolderBase<T> {
+  ContentHolderHorizontal({
+    required this.content,
   });
-  final ImageEntity image;
+  final T content;
 
   @override
   bool get isHorizontal => true;

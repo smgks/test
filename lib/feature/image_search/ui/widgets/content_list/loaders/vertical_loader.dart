@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '/feature/image_search/ui/bloc/image_search_bloc.dart';
-import '/feature/image_search/ui/widgets/images_list/loader.dart';
+import 'loader.dart';
 
 class VerticalLoader extends StatelessWidget {
   const VerticalLoader({super.key});

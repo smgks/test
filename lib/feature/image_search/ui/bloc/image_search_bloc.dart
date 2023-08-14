@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:temp/feature/image_search/domain/entities/image_entity.dart';
 
 import '/utils/debouncer.dart';
 import '/feature/image_search/domain/entities/errors.dart';
@@ -63,7 +64,7 @@ class ImageSearchBloc extends Bloc<ImageSearchEvent, ImageSearchState> {
         error: e.message,
       );
       emit(
-          newState
+        newState,
       );
     }
   }
@@ -85,7 +86,6 @@ class ImageSearchBloc extends Bloc<ImageSearchEvent, ImageSearchState> {
         ImageSearchError(e.message),
       );
     }
-
   }
 
   FutureOr<void> onChangeSearchQuery(event, emit) async {

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -23,6 +24,7 @@ abstract class _UnsplashApi {
   );
 }
 
+@Injectable(as: DataSourceBase)
 class DataSourceUnsplash implements DataSourceBase{
   final Dio _dio = getIt<Dio>(instanceName: 'UnsplashClientModule');
   late final _UnsplashApi _api = _UnsplashApi(

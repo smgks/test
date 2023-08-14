@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:styled_widget/styled_widget.dart';
+
+import 'image_network_loader.dart';
 import '/feature/image_search/ui/view_models/image_manager.dart';
-import '/feature/image_search/ui/widgets/images_list/image_network_loader.dart';
 
 class HorizontalImage extends StatelessWidget {
   const HorizontalImage({
@@ -9,7 +10,7 @@ class HorizontalImage extends StatelessWidget {
     required this.image,
   });
 
-  final ImageHolderHorizontal image;
+  final ContentHolderHorizontal image;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +21,9 @@ class HorizontalImage extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: ((156*2)+18)/200,
         child: ImageNetworkLoader(
-          url: image.image.urlSmall,
-          urlRaw: image.image.urlRaw,
-          id: image.image.id,
+          url: image.content.urlSmall,
+          urlRaw: image.content.urlRaw,
+          id: image.content.id,
         ),
       ),
     ).paddingDirectional(vertical: 10);

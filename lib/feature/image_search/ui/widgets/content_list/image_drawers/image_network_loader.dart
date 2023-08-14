@@ -3,7 +3,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 import '/feature/image_search/domain/use_case/download_image.dart';
 
-import 'loader.dart';
+import '../loaders/loader.dart';
 
 class ImageNetworkLoader extends StatefulWidget {
   final String url;

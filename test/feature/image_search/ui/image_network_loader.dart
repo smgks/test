@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:temp/di.dart';
 import 'package:temp/feature/image_search/domain/repository/image_repository.dart';
-import 'package:temp/feature/image_search/ui/widgets/images_list/image_network_loader.dart';
+import 'package:temp/feature/image_search/ui/widgets/content_list/image_drawers/image_network_loader.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 

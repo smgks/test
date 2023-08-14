@@ -1,11 +1,11 @@
-class ImageEntity {
+import '/feature/image_search/domain/entities/media_content.dart';
+
+class ImageEntity extends MediaContentEntity {
   final String id;
   final int width;
   final int height;
   final String urlSmall;
   final String urlRaw;
-
-  bool get isHorizontal => width > height;
 
   ImageEntity({
     required this.id,
@@ -14,4 +14,7 @@ class ImageEntity {
     required this.width,
     required this.height,
   });
+
+  @override
+  bool get isHorizontal => width > height;
 }

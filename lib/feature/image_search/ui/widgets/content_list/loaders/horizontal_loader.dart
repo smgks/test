@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:styled_widget/styled_widget.dart';
 
+import 'loader.dart';
 import '/feature/image_search/ui/bloc/image_search_bloc.dart';
-import '/feature/image_search/ui/widgets/images_list/loader.dart';
 
 class HorizontalLoader extends StatelessWidget {
   const HorizontalLoader({super.key});

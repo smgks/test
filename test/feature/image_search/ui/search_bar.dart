@@ -19,7 +19,6 @@ void main() {
     TestWidgetsFlutterBinding.ensureInitialized();
     getIt.unregister<ImageRepositoryBase>();
     getIt.registerLazySingleton<ImageRepositoryBase>(() => MockImageRepositoryBase());
-
   });
   
   testWidgets('Test search delay', (WidgetTester tester) async {
